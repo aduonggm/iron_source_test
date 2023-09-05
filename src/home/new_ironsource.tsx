@@ -1,13 +1,10 @@
-import { View, Text, Button, StatusBar, StyleSheet, Image } from "react-native"
-
-import NotificationButton from "./NotificationButton"
-import StoryList from "./StoryList"
-import { ScrollView } from "react-native-gesture-handler"
-
 import {
   PixelRatio,
+  StyleSheet,
+  Text,
   TouchableOpacity,
   UIManager,
+  View,
   findNodeHandle,
 } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
@@ -17,12 +14,9 @@ import {
   Ironsource,
 } from 'react-native-ironsource-advanced';
 
-const HomeScreen = ({ navigation }: any) => {
-
-
+const IronSourceBannerComponent = () => {
   useEffect(() => {
     Ironsource.initWithAdUnits('1ac27d185', ['BANNER'], {
-    
       validateIntegration: true,
     });
 
@@ -54,19 +48,17 @@ const HomeScreen = ({ navigation }: any) => {
   };
 
   const destroyBanner = () => {};
-  return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor='#ffffff' barStyle='dark-content' />
-      <View style={styles.appBar}>
-        <Text style={styles.textHeader}> Postinger. </Text>
-        <NotificationButton />
-      </View>
 
-      <ScrollView>
-        <StoryList />
-        <View style = {{ backgroundColor: "red", height:300 , width: "100%"}}/>
-      
-        <TouchableOpacity
+  return (
+    <View
+      ref={componentRef}
+      style={{
+       
+
+        backgroundColor: 'red',
+      }}
+    >
+      <TouchableOpacity
         style={{ backgroundColor: 'green', padding: 20 }}
         onPress={() => {
           loadBanner();
@@ -85,33 +77,11 @@ const HomeScreen = ({ navigation }: any) => {
           style={{ height: 150, width: '100%', backgroundColor: 'black' }}
         />
       </View>
-        <View style = {{ backgroundColor: "green", height:300 , width: "100%"}}/>
-      </ScrollView>
     </View>
-  )
-}
+  );
+};
 
-const styles = StyleSheet.create({
-  textHeader: {
-    fontSize: 24,
-    color: "black",
-    fontWeight: "500"
-  },
 
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    backgroundColor: "#ffffff"
-  },
+const styles = StyleSheet.create({});
 
-  appBar: {
-    height: 60,
-    paddingHorizontal: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "space-between"
-  }
-})
-export default HomeScreen
+export default IronSourceBannerComponent;

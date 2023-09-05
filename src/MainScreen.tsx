@@ -39,9 +39,9 @@ function MyTabs() {
       })}
     >
       <BottomTab.Screen name='Home' component={HomeScreen} />
-      <BottomTab.Screen name='Search' component={HomeScreen} />
-      <BottomTab.Screen name='Add' component={HomeScreen} />
-      <BottomTab.Screen name='Message' component={HomeScreen} />
+      <BottomTab.Screen name='Search' component={SettingsScreen} />
+      <BottomTab.Screen name='Add' component={SettingsScreen} />
+      <BottomTab.Screen name='Message' component={SettingsScreen} />
       <BottomTab.Screen name='Profile' component={SettingsScreen} />
     </BottomTab.Navigator>
   )
